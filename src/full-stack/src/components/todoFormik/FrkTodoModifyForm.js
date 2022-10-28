@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoModifyForm(props) {
+function FrkTodoModifyForm(props) {
   return (
     <form>
       <div className="form-group row required">
@@ -86,4 +86,4 @@ function TodoModifyForm(props) {
   );
 }
 
-export default TodoModifyForm;
+export default FrkTodoModifyForm;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import * as todoApiService from "../../api/todoApiService";
-import TodoModifyForm from "./TodoModifyForm";
+import FrkTodoModifyForm from "./FrkTodoModifyForm";
 import { CreateUUID } from "../../utils/uuidUtil";
 
-function TodoModifyPage() {
+function FrkTodoModifyPage() {
   const { id } = useParams();
   let navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -33,7 +33,7 @@ function TodoModifyPage() {
     });
   }
 
-  function formIsValid() {
+  const formIsValid = () => {
     const _errors = {};
 
     if (!todo.partitionKey) _errors.role = "Role is required";
@@ -46,10 +46,10 @@ function TodoModifyPage() {
   }
 
   const handleBack = () => {
-    navigate("/todo");
+    navigate("/frktodo");
   };
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formIsValid()) return;
@@ -66,7 +66,7 @@ function TodoModifyPage() {
     }
   }
 
-  function handleDelete() {
+  const handleDelete = () => {
     todoApiService.deleteTodo("Admin", id).then(() => {
       handleBack();
     });
@@ -74,11 +74,11 @@ function TodoModifyPage() {
 
   return (
     <div className="jumbotron">
-      <h1>{actionName} Todo</h1>
-      <Link to="/todo" className="btn btn-lg btn-primary">
+      <h1>{actionName} Formik Todo</h1>
+      <Link to="/frktodo" className="btn btn-lg btn-primary">
         &laquo; Back
       </Link>
-      <TodoModifyForm
+      <FrkTodoModifyForm
         todo={todo}
         errors={errors}
         onChange={handleChange}
@@ -89,4 +89,4 @@ function TodoModifyPage() {
   );
 }
 
-export default TodoModifyPage;
+export default FrkTodoModifyPage;

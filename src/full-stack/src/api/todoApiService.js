@@ -1,5 +1,5 @@
 import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = "https://localhost:44346/api/Person";
+const baseUrl = "https://managedpocapi.azurewebsites.net/api/Person";
 
 export function getAllTodo() {
   return fetch(`${baseUrl}/GetAllTodo`)
